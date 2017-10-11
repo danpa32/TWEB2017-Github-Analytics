@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "mocha"
   },
   "repository": {
@@ -19,11 +20,20 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "eslint": "^4.7.2",
-    "mocha": "^3.5.3",
     "eslint-config-airbnb-base": "^12.0.0",
-    "eslint-plugin-import": "^2.7.0"
+    "eslint-plugin-chai-expect": "^1.1.1",
+    "eslint-plugin-chai-friendly": "^0.4.0",
+    "eslint-plugin-import": "^2.7.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^4.0.0",
+    "gulp-load-plugins": "^1.5.0",
+    "mocha": "^3.5.3"
   },
   "dependencies": {
-    "github": "^11.0.0"
+    "express": "^4.16.0",
+    "github": "^11.0.0",
+    "github-publish": "^2.0.0",
+    "nconf": "^0.8.5",
+    "superagent": "^3.6.3"
   }
 }
