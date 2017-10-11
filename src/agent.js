@@ -1,6 +1,7 @@
 const GithubAPI = require('../src/github-api');
-const credential = require('../auth.json');
+const Credential = require('../src/credential');
 
+const credential = new Credential();
 const github = new GithubAPI(credential);
 
 const REPO_INFO = {

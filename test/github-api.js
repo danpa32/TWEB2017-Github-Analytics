@@ -1,7 +1,9 @@
 const GithubAPI = require('../src/github-api');
-const credential = require('../auth.json');
+const Credential = require('../src/credential');
 
 const should = require('chai').should();
+
+const credential = new Credential();
 
 describe('Github API', () => {
   it('is possible to create one', () => {
@@ -17,7 +19,7 @@ describe('Github API', () => {
   });
 
 
-  it('is possible to publish a file', (done) => {
+  it('is possible to publish a file and then update it', (done) => {
     const PUBLISH_INFO = {
       repo: 'TWEB2017-Github-Analytics-Client',
       owner: 'danpa32',
@@ -37,44 +39,17 @@ describe('Github API', () => {
       PUBLISH_INFO.path, JSON.stringify(data), PUBLISH_INFO.message, (err, res) => {
         should.not.exist(err);
         should.exist(res);
-        done();
-      },
-    );
-  });
 
-  it('is possible to update a file', (done) => {
-    const PUBLISH_INFO = {
-      repo: 'TWEB2017-Github-Analytics-Client',
-      owner: 'danpa32',
-      branch: 'gh-pages',
-      path: 'test.json',
-      message: 'New version of the data',
-    };
-    const github = new GithubAPI(credential);
-
-    const data = {
-      date: new Date(),
-      message: 'it works',
-    };
-
-    // Create
-    github.pushFile(
-      PUBLISH_INFO.owner, PUBLISH_INFO.repo, PUBLISH_INFO.branch,
-      PUBLISH_INFO.path, JSON.stringify(data), PUBLISH_INFO.message, (err, res) => {
-        should.not.exist(err);
-        should.exist(res);
-        done();
-      },
-    );
-
-    // Update
-    data.message = 'it updates';
-    github.pushFile(
-      PUBLISH_INFO.owner, PUBLISH_INFO.repo, PUBLISH_INFO.branch,
-      PUBLISH_INFO.path, JSON.stringify(data), PUBLISH_INFO.message, (err, res) => {
-        should.not.exist(err);
-        should.exist(res);
-        done();
+        // Update
+        data.message = 'it updates';
+        github.pushFile(
+          PUBLISH_INFO.owner, PUBLISH_INFO.repo, PUBLISH_INFO.branch,
+          PUBLISH_INFO.path, JSON.stringify(data), PUBLISH_INFO.message, (err, res) => {
+            should.not.exist(err);
+            should.exist(res);
+            done();
+          },
+        );
       },
     );
   });
