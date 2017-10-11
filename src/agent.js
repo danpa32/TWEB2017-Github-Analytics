@@ -1,5 +1,3 @@
-const fs = require('fs');
-
 const GithubAPI = require('../src/github-api');
 const credential = require('../auth.json');
 
