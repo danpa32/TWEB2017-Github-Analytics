@@ -39,8 +39,13 @@ function digest(input) {
 
 function publish(data, callback) {
   github.pushFile(
-    PUBLISH_INFO.owner, PUBLISH_INFO.repo, PUBLISH_INFO.branch,
-    PUBLISH_INFO.path, JSON.stringify(data), PUBLISH_INFO.message, callback,
+    PUBLISH_INFO.owner,
+    PUBLISH_INFO.repo,
+    PUBLISH_INFO.branch,
+    PUBLISH_INFO.path,
+    JSON.stringify(data),
+    PUBLISH_INFO.message,
+    callback,
   );
 }
 

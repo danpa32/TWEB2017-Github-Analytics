@@ -44,9 +44,9 @@ describe('Github API', () => {
         data.message = 'it updates';
         github.pushFile(
           PUBLISH_INFO.owner, PUBLISH_INFO.repo, PUBLISH_INFO.branch,
-          PUBLISH_INFO.path, JSON.stringify(data), PUBLISH_INFO.message, (err, res) => {
-            should.not.exist(err);
-            should.exist(res);
+          PUBLISH_INFO.path, JSON.stringify(data), PUBLISH_INFO.message, (error, response) => {
+            should.not.exist(error);
+            should.exist(response);
             done();
           },
         );
@@ -67,23 +67,6 @@ describe('Github API', () => {
       should.not.exist(err);
       should.exist(res);
       res.body.should.be.an('array');
-      done();
-    });
-  });
-
-  it('is possible to recuperate all pages of issues from a repo', (done) => {
-    const REPO_INFO = {
-      owner: 'gohugoio',
-      repo: 'hugo',
-    };
-    const github = new GithubAPI(credential);
-
-    const URL = `${github.BASE_URL}/repos/${REPO_INFO.owner}/${REPO_INFO.repo}/issues`;
-
-    github.fetchAll(URL, (err, acc) => {
-      should.not.exist(err);
-      should.exist(acc);
-      acc.should.be.an('array');
       done();
     });
   });
