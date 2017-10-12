@@ -1,5 +1,5 @@
-const GithubAPI = require('../src/github-api');
-const Credential = require('../src/credential');
+const GithubAPI = require('./github-api');
+const Credential = require('./credential');
 
 const credential = new Credential();
 const github = new GithubAPI(credential);
