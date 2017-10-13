@@ -41,5 +41,5 @@ gulp.task('deploy', ['publish'], () => gulp.src(['dist/**/*.js', 'package.json']
   .pipe(plugins.git.commit(`Deploy of ${new Date()}`))
   .pipe(plugins.git.push('heroku', 'master')));
 
-gulp.task('clean', () => gulp.src('dest/**/*', { read: false })
-  .pipe(plugins.rm({ async: false })));
+gulp.task('clean', () => gulp.src('dist', { read: false })
+  .pipe(plugins.clean()));

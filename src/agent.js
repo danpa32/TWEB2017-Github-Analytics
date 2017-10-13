@@ -1,5 +1,5 @@
-const GithubAPI = require('../src/github-api');
-const Credential = require('../src/credential');
+const GithubAPI = require('./github-api');
+const Credential = require('./credential');
 
 const credential = new Credential();
 const github = new GithubAPI(credential);
@@ -49,15 +49,17 @@ function publish(data, callback) {
   );
 }
 
+console.log('STARTING CRAWL');
 github.fetchAllIssues(REPO_INFO.owner, REPO_INFO.repo, (err, acc) => {
   if (err) {
+    console.error('ERROR FETCHING DATA');
     return;
   }
   console.log('DATA FETCHED');
 
   publish(digest(acc), (error) => {
     if (error) {
-      console.log('ERROR PUBLISHING THE FILE');
+      console.error('ERROR PUBLISHING THE FILE');
     } else {
       console.log('All DONE');
     }

@@ -48,5 +48,8 @@
     "github": "^11.0.0",
     "nconf": "^0.8.5",
     "superagent": "^3.6.3"
+  },
+  "engines": {
+    "node": "8.6.0"
   }
 }
