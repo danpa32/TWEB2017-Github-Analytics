@@ -9,10 +9,15 @@ class Credentials {
       this.username = process.env.GITHUB_USERNAME;
       this.source = 'ENV';
     } else {
-      const auth = JSON.parse(fs.readFileSync(path || DEFAULT_AUTH_FILE_PATH, 'utf8'));
-      this.token = auth.token;
-      this.username = auth.username;
-      this.source = 'FILE';
+      const usedPath = path || DEFAULT_AUTH_FILE_PATH;
+      if (fs.existsSync(usedPath)) {
+        const auth = JSON.parse(fs.readFileSync(usedPath, 'utf8'));
+        this.token = auth.token;
+        this.username = auth.username;
+        this.source = 'FILE';
+      } else {
+        throw new Error('No credential found');
+      }
     }
   }
 }

@@ -41,15 +41,17 @@ function publish(data, callback) {
   github.pushFile(PUBLISH_INFO.owner, PUBLISH_INFO.repo, PUBLISH_INFO.branch, PUBLISH_INFO.path, JSON.stringify(data), PUBLISH_INFO.message, callback);
 }
 
+console.log('STARTING CRAWL');
 github.fetchAllIssues(REPO_INFO.owner, REPO_INFO.repo, (err, acc) => {
   if (err) {
+    console.error('ERROR FETCHING DATA');
     return;
   }
   console.log('DATA FETCHED');
 
   publish(digest(acc), error => {
     if (error) {
-      console.log('ERROR PUBLISHING THE FILE');
+      console.error('ERROR PUBLISHING THE FILE');
     } else {
       console.log('All DONE');
     }
