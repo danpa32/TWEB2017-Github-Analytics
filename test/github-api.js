@@ -25,7 +25,7 @@ describe('Github API', () => {
       owner: 'danpa32',
       branch: 'gh-pages',
       path: 'test.json',
-      message: 'New version of the data',
+      message: 'TEST: New version of the data',
     };
     const github = new GithubAPI(credential);
 

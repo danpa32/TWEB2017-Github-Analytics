@@ -14,7 +14,7 @@ const PUBLISH_INFO = {
   owner: 'danpa32',
   branch: 'gh-pages',
   path: 'repo.json',
-  message: 'New version of the data'
+  message: 'AGENT: New version of the data'
 };
 
 function digest(input) {
@@ -44,7 +44,7 @@ function publish(data, callback) {
 console.log('STARTING CRAWL');
 github.fetchAllIssues(REPO_INFO.owner, REPO_INFO.repo, (err, acc) => {
   if (err) {
-    console.error('ERROR FETCHING DATA');
+    console.error('ERROR FETCHING DATA: %O', err);
     return;
   }
   console.log('DATA FETCHED');

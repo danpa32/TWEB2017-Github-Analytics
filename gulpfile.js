@@ -38,8 +38,7 @@ gulp.task('publish', () => {
 
 gulp.task('deploy', ['publish'], () => gulp.src(['dist/**/*.js', 'package.json'])
   .pipe(plugins.git.add())
-  .pipe(plugins.git.commit(`Deploy of ${new Date()}`))
-  .pipe(plugins.git.push('heroku', 'master')));
+  .pipe(plugins.git.commit(`Deploy of ${new Date()}`)));
 
 gulp.task('clean', () => gulp.src('dist', { read: false })
   .pipe(plugins.clean()));
