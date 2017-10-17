@@ -19,7 +19,7 @@ describe('Github API', () => {
   });
 
 
-  it('is possible to publish a file and then update it', (done) => {
+  xit('is possible to publish a file and then update it', (done) => {
     const PUBLISH_INFO = {
       repo: 'TWEB2017-Github-Analytics-Client',
       owner: 'danpa32',
@@ -71,7 +71,7 @@ describe('Github API', () => {
     });
   });
 
-  it('is possible to recuperate all pages of issues from a repo using the given method', (done) => {
+  xit('is possible to recuperate all pages of issues from a repo using the given method', (done) => {
     const REPO_INFO = {
       owner: 'gohugoio',
       repo: 'hugo',

@@ -5,8 +5,8 @@ const credential = new Credential();
 const github = new GithubAPI(credential);
 
 const REPO_INFO = {
-  owner: 'gohugoio',
-  repo: 'hugo',
+  owner: 'nodejs',
+  repo: 'node',
 };
 
 const PUBLISH_INFO = {

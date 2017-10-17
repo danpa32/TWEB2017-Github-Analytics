@@ -25,20 +25,3 @@ gulp.task('tests', () => gulp.src(['test/**/*.js'], { read: false })
     timeout: 0,
   })));
 
-gulp.task('scripts', () => gulp.src('src/**/*.js', { base: 'src' })
-  .pipe(plugins.plumber())
-  .pipe(plugins.if(dev, plugins.sourcemaps.init()))
-  .pipe(plugins.babel())
-  .pipe(plugins.if(dev, plugins.sourcemaps.write('.')))
-  .pipe(gulp.dest('dist')));
-
-gulp.task('publish', () => {
-  runSequence(['lint', 'lint:test'], ['tests'], ['scripts']);
-});
-
-gulp.task('deploy', ['publish'], () => gulp.src(['dist/**/*.js', 'package.json'])
-  .pipe(plugins.git.add())
-  .pipe(plugins.git.commit(`Deploy of ${new Date()}`)));
-
-gulp.task('clean', () => gulp.src('dist', { read: false })
-  .pipe(plugins.clean()));

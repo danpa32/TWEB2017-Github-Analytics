@@ -1,1 +1,1 @@
-clock: npm run prod
+clock: npm start
