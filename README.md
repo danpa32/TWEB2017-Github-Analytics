@@ -17,5 +17,5 @@ This repository contains the agent part of the project. It uses Node.js to recup
 1. You need to place yourself in the **TWEB2017-Github-Analytics-Agent repository**
 2. Execute `npm install` in the terminal
 3. Execute `gulp lint` and `gulp tests` in the terminal to check the code.
-    a. You must have installed the gulp client with the command `npm install -g gulp-cli`
+    * You must have installed the gulp client with the command `npm install -g gulp-cli`
 4. Execute `npm start` to start the agent.
