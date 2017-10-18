@@ -19,7 +19,7 @@ describe('Github API', () => {
   });
 
 
-  xit('is possible to publish a file and then update it', (done) => {
+  it('is possible to publish a file and then update it', (done) => {
     const PUBLISH_INFO = {
       repo: 'TWEB2017-Github-Analytics-Client',
       owner: 'danpa32',

@@ -22,18 +22,28 @@ function digest(input) {
     date_crawl: new Date(),
     owner: REPO_INFO.owner,
     repo: REPO_INFO.repo,
-    issues: [],
+    authors: [],
   };
+  const authorsMap = new Map();
+
   for (let i = 0; i < input.length; i += 1) {
-    output.issues.push({
-      idIssue: input[i].id,
-      user: {
-        id: input[i].user.id,
+    const userId = input[i].user.id;
+    let authorIssues = authorsMap.get(userId);
+    if (authorIssues === undefined) {
+      authorIssues = {
+        id: userId,
         login: input[i].user.login,
-      },
-      state: input[i].state,
-    });
+        open: 0,
+        closed: 0,
+      };
+      authorsMap.set(userId, authorIssues);
+    }
+
+    authorIssues[input[i].state] += 1;
   }
+
+  output.authors = Array.from(authorsMap.values());
+
   return output;
 }
 
@@ -59,7 +69,7 @@ github.fetchAllIssues(REPO_INFO.owner, REPO_INFO.repo, (err, acc) => {
 
   publish(digest(acc), (error) => {
     if (error) {
-      console.error('ERROR PUBLISHING THE FILE');
+      console.error('ERROR PUBLISHING THE FILE: %O', error);
     } else {
       console.log('All DONE');
     }

@@ -59,7 +59,7 @@ class GithubAPI {
       branch,
       committer: {
         name: 'Crawler',
-        email: 'christophermeier@heig-vd.ch',
+        email: 'christopher.meier@heig-vd.ch',
       },
       content: buf.toString('base64'),
     };
